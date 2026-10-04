@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WeatherNow</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+  <canvas id="fx"></canvas>
+
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand fw-bold fs-4" href="#">🌤️ WeatherNow</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"
+        aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav me-auto ms-lg-4">
+          <li class="nav-item"><a class="nav-link active" href="#">🏠 Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#forecast">🌦️ Forecast</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">📍 Cities</a>
+            <ul class="dropdown-menu" id="cities"></ul>
+          </li>
+        </ul>
+        <div class="btn-group me-3 my-2 my-lg-0">
+          <button id="btnC" class="btn btn-sm btn-outline-light btn-unit active">°C</button>
+          <button id="btnF" class="btn btn-sm btn-outline-light btn-unit">°F</button>
+        </div>
+        <form class="d-flex" id="form">
+          <input id="q" class="form-control me-2" type="search" placeholder="Search city..." aria-label="Search city">
+          <button class="btn btn-light">🔍</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4">
+    <div id="err" class="alert alert-warning text-center d-none"></div>
+
+    <section class="glass text-center p-4 p-md-5 mb-3">
+      <h2 class="fw-semibold mb-0">📍 <span id="city">Bengaluru</span></h2>
+      <p class="muted"><span id="time">--</span></p>
+      <div id="emoji">⏳</div>
+      <div id="temp" class="mt-2"><span id="t">--</span><span class="u">°C</span></div>
+      <h3 class="fw-light" id="label">Loading…</h3>
+      <p class="muted mb-0">Feels like <span id="feel">--</span>° · High <span id="max">--</span>° · Low <span
+          id="min">--</span>°</p>
+    </section>
+
+    <section class="row row-cols-2 row-cols-md-4 g-3 mb-3 text-center">
+      <div class="col">
+        <div class="glass p-3 h-100">
+          <div class="fs-2">💧</div>
+          <div class="fs-4 fw-semibold"><span id="hum">--</span>%</div>
+          <div class="muted">Humidity</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="glass p-3 h-100">
+          <div class="fs-2">💨</div>
+          <div class="fs-4 fw-semibold"><span id="wind">--</span> km/h</div>
+          <div class="muted">Wind · <span id="dir">--</span></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="glass p-3 h-100">
+          <div class="fs-2">🌧️</div>
+          <div class="fs-4 fw-semibold"><span id="rain">--</span>%</div>
+          <div class="muted">Rain chance</div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="glass p-3 h-100">
+          <div class="fs-2">🌅</div>
+          <div class="fs-5 fw-semibold"><span id="rise">--</span> / <span id="set">--</span></div>
+          <div class="muted">Sunrise / Sunset</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ai"></section>
+
+    <section id="forecast" class="glass p-4">
+      <ul class="nav nav-underline mb-3" id="tabs">
+        <li class="nav-item"><a class="nav-link active" data-k="temperature_2m">Temperature</a></li>
+        <li class="nav-item"><a class="nav-link" data-k="precipitation_probability">Precipitation</a></li>
+        <li class="nav-item"><a class="nav-link" data-k="wind_speed_10m">Wind</a></li>
+      </ul>
+      <div id="chart"></div>
+      <div id="days" class="d-flex gap-2 overflow-auto pt-3 pb-2"></div>
+    </section>
+    <p class="text-center muted small mt-3"> BY Ankit</p>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
